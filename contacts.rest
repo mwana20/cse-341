@@ -4,7 +4,7 @@
 GET http://localhost:3000/contacts
 
 ### Get one contact (replace with actual ID)
-GET http://localhost:3000/contacts/682274ddd0a5b29bade88762
+GET http://localhost:3000/contacts/68274f20166df25e488d40e6
 
 ### Welcome message
 GET http://localhost:3000/
@@ -16,7 +16,7 @@ GET http://localhost:3000/
 GET https://cse-341spring.onrender.com/contacts
 
 ### Get one contact (replace with actual ID)
-GET https://cse-341spring.onrender.com/contacts/682274ddd0a5b29bade88762
+GET https://cse-341spring.onrender.com/contacts/68274f20166df25e488d40e6
 
 ### Welcome message
 GET https://cse-341spring.onrender.com/

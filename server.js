@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { connectToDatabase, getDb } = require('./db/connect');
-const contactsRoutes = require('./routes/contacts');
+const contactsRoutes = require('./routes/contacts.js');
 
 const app = express();
 
