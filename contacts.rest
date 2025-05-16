@@ -1,0 +1,22 @@
+### Local API Tests
+
+### Get all contacts
+GET http://localhost:3000/contacts
+
+### Get one contact (replace with actual ID)
+GET http://localhost:3000/contacts/682274ddd0a5b29bade88762
+
+### Welcome message
+GET http://localhost:3000/
+
+
+### Render API Tests (replace with your actual Render URL)
+
+### Get all contacts
+GET https://cse-341spring.onrender.com/contacts
+
+### Get one contact (replace with actual ID)
+GET https://cse-341spring.onrender.com/contacts/682274ddd0a5b29bade88762
+
+### Welcome message
+GET https://cse-341spring.onrender.com/
