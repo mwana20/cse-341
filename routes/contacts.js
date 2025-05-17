@@ -1,4 +1,4 @@
-// routes/contacts.js with enhanced error logging
+// This is a routes/contacts.js with enhanced error logging
 const express = require('express');
 const { ObjectId } = require('mongodb');
 const { getDb } = require('../db/connect');

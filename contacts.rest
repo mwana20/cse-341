@@ -16,7 +16,7 @@ GET http://localhost:3000/
 GET https://cse-341spring.onrender.com/contacts
 
 ### Get one contact (replace with actual ID)
-GET https://cse-341spring.onrender.com/contacts/68274f20166df25e488d40e6
+GET https://cse-341-1-8o7o.onrender.com/contacts/68274f20166df25e488d40e6
 
 ### Welcome message
 GET https://cse-341spring.onrender.com/

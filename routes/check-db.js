@@ -1,5 +1,4 @@
-// Basic troubleshooting script for MongoDB connection
-// Save as check-db.js and run with node check-db.js
+
 
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
