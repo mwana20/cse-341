@@ -1,7 +1,5 @@
-
-
 require('dotenv').config();
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 async function checkDatabase() {
   const uri = process.env.MONGODB_URI;
@@ -80,6 +78,19 @@ async function checkDatabase() {
           console.log(`Favorite Color: ${doc.favoriteColor}`);
           console.log(`Birthday: ${doc.birthday}`);
         });
+        
+        // Example: Fetch a contact by ID
+        const sampleId = 'PUT_AN_ID_HERE'; // Replace with a real ObjectId string
+        try {
+          const contact = await db.collection('contacts').findOne({ _id: new ObjectId(sampleId) });
+          if (contact) {
+            console.log('\nContact found by ID:', contact);
+          } else {
+            console.log('\nNo contact found with that ID.');
+          }
+        } catch (err) {
+          console.log('Error fetching contact by ID:', err.message);
+        }
       }
     }
     

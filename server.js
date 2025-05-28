@@ -1,15 +1,20 @@
-// server.js with enhanced logging
+// server.js with Swagger integration
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const { connectToDatabase, getDb } = require('./db/connect');
-const contactsRoutes = require('./routes/contacts.js');
+const contactsRoutes = require('./routes/contacts');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Swagger API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Debug route to check database connection
 app.get('/debug/db', async (req, res) => {
@@ -45,33 +50,67 @@ app.get('/debug/db', async (req, res) => {
 });
 
 // Routes
+/**
+ * @swagger
+ * /contacts:
+ *   get:
+ *     tags:
+ *       - Contacts
+ *     description: Returns all contacts
+ *     responses:
+ *       200:
+ *         description: Successfully returned all contacts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/definitions/ContactResponse'
+ *       500:
+ *         description: Server error
+ */
 app.use('/contacts', contactsRoutes);
 
 // Root route
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     description: Welcome message
+ *     responses:
+ *       200:
+ *         description: Successfully returned welcome message
+ */
 app.get('/', (req, res) => {
   res.send('Welcome to the Contacts API');
 });
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, async () => {
-  try {
-    console.log(`🚀 Server running on http://localhost:${port}`);
-    await connectToDatabase();
-    
-    // Verify the contacts collection exists and has data
+// Start server only if not being required by another file (for testing)
+if (require.main === module) {
+  app.listen(port, async () => {
     try {
-      const db = getDb();
-      const count = await db.collection('contacts').countDocuments();
-      console.log(`✅ Found ${count} contacts in database`);
+      console.log(`🚀 Server running on http://localhost:${port}`);
+      console.log(`📄 API Documentation available at http://localhost:${port}/api-docs`);
+      await connectToDatabase();
       
-      if (count === 0) {
-        console.warn('⚠️ Warning: Contacts collection is empty');
+      // Verify the contacts collection exists and has data
+      try {
+        const db = getDb();
+        const count = await db.collection('contacts').countDocuments();
+        console.log(`✅ Found ${count} contacts in database`);
+        
+        if (count === 0) {
+          console.warn('⚠️ Warning: Contacts collection is empty');
+        }
+      } catch (dbError) {
+        console.error('❌ Error checking contacts collection:', dbError.message);
       }
-    } catch (dbError) {
-      console.error('❌ Error checking contacts collection:', dbError.message);
+    } catch (err) {
+      console.error('❌ Failed to initialize server:', err);
     }
-  } catch (err) {
-    console.error('❌ Failed to initialize server:', err);
-  }
-});
+  });
+}
+
+module.exports = app; // Export for testing
