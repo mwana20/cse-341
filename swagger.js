@@ -38,6 +38,22 @@ const doc = {
       favoriteColor: 'blue',
       birthday: '2000-01-21'
     },
+        ContactResponse: {
+      _id: '682274ddd0a5b29bade88762',
+      firstName: 'Mutemere',
+      lastName: 'Samuel',
+      email: 'mutemere@gmail.com',
+      favoriteColor: 'Orange',
+      birthday: '1934-01-21'
+    },
+        ContactResponse: {
+      _id: '682274ddd0a5b29bade88762',
+      firstName: 'Alinaiswe',
+      lastName: 'Calleb',
+      email: 'alinaiswe@gmail.com',
+      favoriteColor: 'blue',
+      birthday: '2009-01-21'
+    },
     NewContactResponse: {
       id: '682274ddd0a5b29bade88762',
       message: 'Contact created successfully'

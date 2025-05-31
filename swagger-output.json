@@ -265,15 +265,15 @@
         },
         "firstName": {
           "type": "string",
-          "example": "Andrew"
+          "example": "Alinaiswe"
         },
         "lastName": {
           "type": "string",
-          "example": "Samuku"
+          "example": "Calleb"
         },
         "email": {
           "type": "string",
-          "example": "samukuandrew@gmail.com"
+          "example": "alinaiswe@gmail.com"
         },
         "favoriteColor": {
           "type": "string",
@@ -281,7 +281,7 @@
         },
         "birthday": {
           "type": "string",
-          "example": "2000-01-21"
+          "example": "2009-01-21"
         }
       }
     },
